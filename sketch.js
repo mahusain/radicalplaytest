@@ -12,7 +12,7 @@ let coin;
 function setup() {
   cnv = createCanvas(w, h);
   textFont('monospace');
-  
+
   player = new Player();
   coin = new Coins();
 }
@@ -20,7 +20,7 @@ function setup() {
 function draw() {
 
   switch (state){
-    case 'title': 
+    case 'title':
       title();
       cnv.mouseClicked(titleClicked);
       break;
@@ -35,7 +35,7 @@ function draw() {
       default:
       break;
   }
-  
+
   if (state === 'title') {
   title();
   cnv.mouseClicked(titleClicked);
@@ -43,6 +43,7 @@ function draw() {
   level1();
   cnv.mouseClicked(starterlevelclicked);
 
+}
 }
 
 function keyPressed(){
@@ -74,7 +75,7 @@ function titleClicked(){
 
 function level1(){
   background(240, 200, 200);
-  
+
   player.display();
   player.move();
   coin.display();
@@ -83,7 +84,7 @@ function level1(){
 function starterlevelclicked() {
   console.log('boost = ' + points);
   points++;
-  
+
   if(points >= 51){
     state = 'boost complete';
   }
@@ -92,12 +93,11 @@ function boostComplete(){
   background(220);
   textSize(40);
   text('BOOST COMPLETE', w/2, h/3);
-  
+
   textSize(40);
   text('Click to go again!', w/2, h/2);
 }
 function boostCompleteClicked(){
   state = 'starterlevel';
   points = 0;
-}
 }
